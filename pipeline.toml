@@ -1,0 +1,31 @@
+[collect]
+out_dir = "pmc_articles"
+query = """("mild cognitive impairment"[tiab] OR MCI[tiab]) AND ("Alzheimer disease"[tiab] OR "Alzheimer's disease"[tiab]) AND (plasma[tiab] OR serum[tiab] OR blood[tiab]) AND (proteomic*[tiab] OR "protein biomarker*"[tiab] OR "plasma protein*"[tiab] OR "serum protein*"[tiab])"""
+year_from = 2020
+page_size = 200
+max_retries = 3
+strict = true
+ncbi_email = "jinhee.hong@cellkey.co.kr"
+ncbi_tool = "pmc_collect_parse_download"
+ncbi_api_key_env = "NCBI_API_KEY"
+
+[retrieval]
+embedding_model = "sentence-transformers/all-MiniLM-L6-v2"
+chunk_size = 200
+chunk_overlap = 50
+top_k = 4
+
+[extract]
+model = "qwen3.5:9b"
+temperature = 0.0
+seed = 42
+max_retries = 2
+
+[score]
+model = "qwen3.5:9b"
+temperature = 0.0
+seed = 42
+thinking = false
+num_predict = 8192
+num_ctx = 32768
+max_retries = 2

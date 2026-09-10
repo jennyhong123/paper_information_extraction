@@ -1,0 +1,9 @@
+# Result file
+pmc_articles/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.pytest_cache/
